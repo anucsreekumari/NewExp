@@ -1,0 +1,33 @@
+<html>
+
+<head>
+   <script>
+  var conn = new WebSocket('ws://localhost:8000');
+
+            conn.onopen = function(e) {
+                console.log("Connection established!");
+                alert('Connected');
+            };
+
+            conn.onmessage = function(e) {
+                console.log(e.data);
+               // alert(e.data);
+            };
+
+            conn.onclose = function(e) {
+                console.log(e.code);
+                console.log(e.reason);
+            };              
+
+            conn.onerror = function(e) {
+                console.log(e);
+            };
+function sendmsg() {
+  conn.send('abc');
+}
+   </script>
+</head>
+<div class="center">
+<button onclick="sendmsg()"> Redirect</button>
+</div>
+</html>
